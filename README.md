@@ -1,2 +1,1 @@
-# Codescope
-https://codescope.rw/
+
