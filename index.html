@@ -1,0 +1,81 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width"><title>CodeScope</title></head><body style="font-family:sans-serif;text-align:center;padding:40px;background:#0a0a0a;color:white"><h1 style="color:#00ff88">✅ CodeScope RWA LIVE</h1><p>Auth Layer #24 working</p><a href="/embed" style="display:inline-block;margin-top:20px;padding:15px 
+
+html
+<!DOCTYPE html>
+<html lang="rw">
+<head>
+<meta charset="UTF-8">
+<title>CodeScope - Data & Code Analyzer</title>
+<style>
+body{font-family:Arial; background:#0f172a; color:white; padding:20px}
+.card{background:#1e293b; padding:20px; border-radius:12px; margin:15px 0}
+button{background:#38bdf8; border:none; padding:12px 20px; border-radius:8px; cursor:pointer; font-weight:bold}
+textarea{width:100%; height:150px; background:#0f172a; color:#7dd3fc; border:1px solid #334155; border-radius:8px; padding:10px}
+.api-box{background:#000; padding:15px; border-radius:8px; color:#22c55e; font-family:monospace}
+</style>
+</head>
+<body>
+
+<h1>🚀 CodeScope - Analyzer yawe</h1>
+
+<div class="card">
+<h3>1. Kusanya Amakuru</h3>
+<input id="userData" placeholder="Andika izina / email / amakuru..." style="width:80%; padding:10px">
+<button onclick="saveData()">Bika Amakuru</button>
+<p id="dataResult"></p>
+</div>
+
+<div class="card">
+<h3>2. Sesengura Code</h3>
+<textarea id="codeInput" placeholder="Paste code yawe hano... ex: function test(){}"></textarea>
+<button onclick="analyzeCode()">Sesengura Code</button>
+<div id="analysisResult" style="margin-top:15px"></div>
+</div>
+
+<div class="card">
+<h3>3. Ihuzwa n'izindi App / Website (API)</h3>
+<p>Izindi app zakoresha iyi API:</p>
+<div class="api-box">
+POST https://codescope.rw/api/analyze<br>
+Body: { "code": "your code here" }<br>
+Response: { "issues": 2, "security": "OK", "quality": "85%" }
+</div>
+<p style="margin-top:10px">Embed Widget:</p>
+<div class="api-box">
+&lt;iframe src="https://codescope.rw/embed" width="100%" height="300"&gt;&lt;/iframe&gt;
+</div>
+</div>
+
+<script>
+function saveData(){
+  let d = document.getElementById('userData').value;
+  localStorage.setItem('collectedData', d);
+  document.getElementById('dataResult').innerText = "✅ Amakuru abitswe: " + d;
+}
+
+function analyzeCode(){
+  let code = document.getElementById('codeInput').value;
+  let issues = 0;
+  if(code.includes('eval(')) issues++;
+  if(code.includes('password =')) issues++;
+  if(code.length < 10) issues++;
+  
+  let quality = Math.max(20, 100 - issues*20);
+  
+  document.getElementById('analysisResult').innerHTML = `
+  <b>📊 Raporo:</b><br>
+  - Uburebure: ${code.length} characters<br>
+  - Ibibazo byabonetse: ${issues}<br>
+  - Umutekano: ${issues>0 ? '⚠️ Reba neza' : '✅ Meza'}<br>
+  - Quality Score: ${quality}%
+  `;
+}
+</script>
+</body>
+</html>
+
+
+
+CodeScope.rw
+
+ Embed</a></body></html>
